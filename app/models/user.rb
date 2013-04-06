@@ -14,6 +14,12 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   
+  def feed
+    #This is only a proto-feed.
+    Micropost.where("user_id = ?", id)
+  end
+
+
   private # création d'un remember token pour chaque user
   
   def create_remember_token
